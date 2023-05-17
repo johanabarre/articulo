@@ -36,3 +36,4 @@ C:\Users\yohan\Desktop\2023-Ciclo1\ProgramacionIII\Articulo\Articulo\Articulo.Vi
 C:\Users\yohan\Desktop\2023-Ciclo1\ProgramacionIII\Articulo\Articulo\Articulo.View\obj\Debug\Articulo.View.frmEstadoNuevo.resources
 C:\Users\yohan\Desktop\2023-Ciclo1\ProgramacionIII\Articulo\Articulo\Articulo.View\obj\Debug\Articulo.View.frmAdmUsuario.resources
 C:\Users\yohan\Desktop\2023-Ciclo1\ProgramacionIII\Articulo\Articulo\Articulo.View\obj\Debug\Articulo.View.frmUsuarioNuevo.resources
+C:\Users\yohan\Desktop\2023-Ciclo1\ProgramacionIII\Articulo\Articulo\Articulo.View\obj\Debug\Articulo.View.frmCategoria.resources

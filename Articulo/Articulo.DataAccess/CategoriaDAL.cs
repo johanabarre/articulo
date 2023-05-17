@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity; //Para usar expresiones lamda
 
+
 namespace Articulo.DataAccess
 {
     public class CategoriaDAL
@@ -91,20 +92,10 @@ namespace Articulo.DataAccess
             bool result = false;
             using (AppDBContext _context = new AppDBContext())
             {
-
-                var query = _context.Categorias.FirstOrDefault(x => x.Nombre.Equals(entity.Nombre));
-
-
-                if (query == null)
-                {
-                    _context.Entry(entity).State = EntityState.Modified;
-                    result = _context.SaveChanges() > 0;
-
-                }
-
-                return result;
-
+                _context.Entry(entity).State = EntityState.Modified;
+                result = _context.SaveChanges() > 0;
             }
+            return result;
 
         }
 

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Articulo.BusinessLogic;
 using Articulo.Entities;
+using MetroFramework;
 using MetroFramework.Forms;
 
 
@@ -17,7 +18,7 @@ namespace Articulo.View
     public partial class frmCategoriaNuevo : MetroForm
     {
 
-        int id;
+        int id = 0;
         public frmCategoriaNuevo()
         {
             InitializeComponent();
@@ -27,8 +28,10 @@ namespace Articulo.View
         {
             InitializeComponent();
             id = entity.CategoriaId;
-            metroTextBox1.Text = entity.Nombre;
 
+            metroTextBox1.Text = entity.Nombre;
+            UpdateCombo();
+            metroComboBox1.SelectedValue = entity.EstadoId;
         }
 
         private void frmCategoriaNuevo_Load(object sender, EventArgs e)
@@ -64,34 +67,27 @@ namespace Articulo.View
 
             Categoria entity = new Categoria()
             {
-               Nombre = metroTextBox1.Text.Trim(),
-               EstadoId = (int)metroComboBox1.SelectedValue
-
+                CategoriaId = id,
+                Nombre = metroTextBox1.Text.Trim(),
+                EstadoId = (int)metroComboBox1.SelectedValue
             };
-            if (id > 0)
+            if (id == 0)
             {
-                entity.CategoriaId = id;
-                if (CategoriaBL.Instance.Update(entity))
+                if (CategoriaBL.Instance.Insert(entity))
                 {
-                    MessageBox.Show("Se Modifico con exito!", "Confirmacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    MetroMessageBox.Show(this, "Registro se agrego con exito!", "Confirmacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
             {
-                if (CategoriaBL.Instance.Insert(entity))
+                if (CategoriaBL.Instance.Update(entity))
                 {
-                    MessageBox.Show("Se agrego con exito!", "Confirmacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    MetroMessageBox.Show(this, "Registro se edito con exito!", "Confirmacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
             }
-            
+            this.Close();
 
-            
-
-            metroTextBox1.ResetText();
-            
 
         }
 
